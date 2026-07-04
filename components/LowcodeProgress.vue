@@ -13,6 +13,12 @@ const props = defineProps<{
 }>()
 
 /**
+ * 统一为 public 目录资源补齐站点 base，兼容 GitHub Pages 子路径部署。
+ */
+const resolvePublicAsset = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
+/**
  * Slidev 当前页点击次数。
  * 由于已经取消 click0 的独立引导态，这里直接从第 1 组能力点开始展示。
  */
@@ -42,7 +48,7 @@ const steps = [
     title: '画布与物料系统',
     description:
       '画布是 lowcode engine 的核心入口，负责连接物料系统、数据模型、路由配置、DAG 流程与 API 配置，保证所见即所得。',
-    image: '/lowcode-4.png',
+    image: resolvePublicAsset('/lowcode-4.png'),
     alt: '画布主页',
   },
   {
@@ -50,7 +56,7 @@ const steps = [
     title: '数据模型',
     description:
       '通过定义数据库表、字段与关系，沉淀业务数据结构，作为页面编排、流程执行与系统交付的基础。',
-    image: '/lowcode-1.png',
+    image: resolvePublicAsset('/lowcode-1.png'),
     alt: '数据模型',
   },
   {
@@ -58,7 +64,7 @@ const steps = [
     title: '路由与多页面',
     description:
       '允许定义路由和多页面跳转，这是 evelan-lowcode 与玩具型平台拉开差距的关键一步，也是系统级平台能力的起点。',
-    image: '/lowcode-2.png',
+    image: resolvePublicAsset('/lowcode-2.png'),
     alt: '路由配置',
   },
   {
@@ -66,7 +72,7 @@ const steps = [
     title: 'DAG 流程配置',
     description:
       '将查询数据库、调用 API 与业务处理流程纳入统一编排，是平台从页面生成走向业务执行的第二个关键台阶。',
-    image: '/lowcode-3.png',
+    image: resolvePublicAsset('/lowcode-3.png'),
     alt: 'DAG流程配置',
   },
   {
@@ -74,7 +80,7 @@ const steps = [
     title: 'API 配置',
     description:
       '通过 API 配置对接外部系统或前后端服务，让平台具备真实业务环境下的集成与交付能力。',
-    image: '/lowcode-5.png',
+    image: resolvePublicAsset('/lowcode-5.png'),
     alt: 'API配置',
   },
 ]
